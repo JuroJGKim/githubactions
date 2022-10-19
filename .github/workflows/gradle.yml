@@ -56,4 +56,4 @@ jobs:
         aws s3 cp \
         --region ap-northeast-2 \
         --acl private \
-	./jurogithubactions.zip s3://jurogithubactions/
+	s3://jurogithubactions
