@@ -19,6 +19,7 @@ env:
   S3_BUCKET_NAME: jurogithubactions
   CODE_DEPLOY_APP_NAME: githubaction-codedeploy
   DEPLOYMENT_GROUP_NAME: githubaction-codedeploy-group
+  AWS_EC2_METADATA_DISABLED: true
 
 permissions:
   contents: read
