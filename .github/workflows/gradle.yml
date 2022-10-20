@@ -13,6 +13,11 @@ on:
   pull_request:
     branches: ["main"]
 
+# 해당 코드에서 사용될 변수 설정
+env:
+  CODE_DEPLOY_APP_NAME: githubaction-codedeploy
+  DEPLOYMENT_GROUP_NAME: githubaction-codedeploy-group
+
 permissions:
   contents: read
 
@@ -58,9 +63,4 @@ jobs:
 
       # S3 버킷에 있는 파일을 대상으로 CodeDeploy 실행
       - name: Deploy to AWS EC2 from S3
-        run: |
-          aws deploy create-deployment \
-          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
-          --deployment-config-name CodeDeployDefault.AllAtOnce \
-          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
-          --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
+        run: aws deploy create-deployment --application-name $CODE_DEPLOY_APP_NAME --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name DEPLOYMENT_GROUP_NAME --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
