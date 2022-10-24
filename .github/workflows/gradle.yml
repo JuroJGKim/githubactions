@@ -44,8 +44,9 @@ jobs:
       shell: bash
 
     - name: Build with Gradle
-      uses: ./gradlew clean -x test build
-      #shell: bash
+      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+      with:
+        arguments: clean build -x test
 
     - name: Generate deployment package # (final)
       run: |
