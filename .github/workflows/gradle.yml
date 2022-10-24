@@ -45,7 +45,7 @@ jobs:
 
     - name: Build with Gradle
       uses: ./gradlew clean -x test build
-      shell: bash
+      #shell: bash
 
     - name: Generate deployment package # (final)
       run: |
